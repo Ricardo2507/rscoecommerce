@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-@nfaq6#qm90rpb2qu39#z8in+-wzm0m8=yr7)#b336ny==z_@g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rscoecommerce.herokuapp.com']
 
 
 # Application definition
@@ -135,8 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Django App for Heroku.
 # ativamos o django-heroku adicionando o seguinte conteúdo
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
 
 try:
     from .local_settings import *
