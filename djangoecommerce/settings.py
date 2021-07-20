@@ -24,7 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@nfaq6#qm90rpb2qu39#z8in+-wzm0m8=yr7)#b336ny==z_@g'
+#SECRET_KEY = 'django-insecure-@nfaq6#qm90rpb2qu39#z8in+-wzm0m8=yr7)#b336ny==z_@g'
+# usar variável de amibiente para esconder a secret key
+SECRET_KEY = os.getenv('SECRET_KEY', '123')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # libs -para usarmos em forms
+    'widget_tweaks',
+    
     # my apps
     'core.apps.CoreConfig',
     'catalog.apps.CatalogConfig',
@@ -138,8 +144,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Django App for Heroku.
 # ativamos o django-heroku adicionando o seguinte conteúdo
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
+
+# para enviar E-mail
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 
 # try:
 #     from .local_settings import *
