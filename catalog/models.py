@@ -18,6 +18,7 @@ class Category(models.Model):
         return self.name
     
     def get_absolute_url(self):
+        #print('lista categorias')
         return reverse('catalog:category',args=[self.slug])
 
 
@@ -41,6 +42,7 @@ class Product(models.Model):
         return self.name
     
     def get_absolute_url(self):
+        #print('lista produtos')
         return reverse('catalog:product',args=[self.slug])
     
    

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     
     # my apps
+    'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
     'catalog.apps.CatalogConfig',
 ]
@@ -76,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # context_processor craido por nós
+                # context_processor criado por nós
                 'catalog.context_processors.categories'
             ],
         },
@@ -144,8 +145,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Django App for Heroku.
 # ativamos o django-heroku adicionando o seguinte conteúdo
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
 
 # para enviar E-mail
 EMAIL_HOST = ''
@@ -153,8 +154,19 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 
-# try:
-#     from .local_settings import *
-# except ImportError:
-#     pass
+# Auth para login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 

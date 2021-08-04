@@ -24,7 +24,9 @@ class ProductTestCase(TestCase):
         self.product = mommy.make(Product, slug='produto')
 
     def test_get_absolute_url(self):
+        
         self.assertEquals(
+                    
             self.product.get_absolute_url(),
             reverse('catalog:product', kwargs={'slug': 'produto'})
         )

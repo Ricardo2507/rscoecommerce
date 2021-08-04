@@ -11,6 +11,7 @@ class ProductListTestCase(TestCase):
        
         def setUp(self):
             self.url = reverse('catalog:product_list')
+           
             self.client = Client()
             self.products = mommy.make('catalog.Product', _quantity=10)
 
