@@ -1,2 +1,2 @@
 
-# web: gunicorn djangoecommerce.wsgi 
+web: gunicorn project.wsgi
