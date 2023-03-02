@@ -4,7 +4,8 @@ from django.views import generic
 from .models import Product, Category
 
 class ProductListView(generic.ListView):
-    
+    # como não passamos o contexto, o django pega o nome da classe(Produto)
+    # coloca em minúsculo aí fica: product_list
     model = Product
     template_name = 'catalog/product_list'
     paginate_by = 3

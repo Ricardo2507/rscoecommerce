@@ -4,8 +4,7 @@ from catalog.models import Category
 from django.core.mail import send_mail
 
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import View, TemplateView, CreateView
+from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 
@@ -16,10 +15,11 @@ User = get_user_model()
 
 
 class IndexView(TemplateView):
-
+   
     template_name = 'core/index.html'
 
-
+# index que antes era uma função, passa a ser uma instância de IndexView
+# criando essa variável, não precisa colocar as_views() na url
 index = IndexView.as_view()
 
 # def index(request):
